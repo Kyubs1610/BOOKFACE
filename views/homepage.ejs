@@ -1,6 +1,28 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Oswald:wght@200;600&family=Raleway&family=Roboto+Condensed:ital@1&family=Unbounded:wght@500&display=swap" rel="stylesheet">
 <h1>You are well connected under <span> <%= user.name %></span></h1>
-<form action="/login" method="POST">
+<form action="/homepage" method="POST">
+
+  <div class="todo-container">
+    <h2>Post your message</h2>
+    <div class="todo">
+    <form action="/homepage" method="POST" class="todo-header">
+    <input type="text" name="content">
+    <button type="submit"><span class="fas fa-plus"></span></button>
+    </form>
+    <ul class="todo-list">
+    <li class="todo-list-item">
+    <div class="todo-list-item-name">Some Text</div>
+    <a href="" class="edit">
+    <span class="fas fa-edit"></span>
+    </a>
+    <a href="" class="remove">
+    <span class="fas fa-times"></span>
+    </a>
+    </li>
+    </ul>
+    </div>
+    </div>
+
  <a href="/login">Logout</a>
 </form>
 <style>
@@ -42,7 +64,7 @@
     display: inline-block;
     
   }
-  button  {
+  /* button  {
     border-radius: 50px;
     margin-top: 10px;
     background-color: #0093E9;
@@ -50,7 +72,7 @@
     color: azure;
     font-size: 20px;
     padding: 0.4em;
-  }
+  } */
   a{
     text-decoration: none;
     color: rgb(220, 22, 22);

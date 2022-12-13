@@ -8,9 +8,11 @@ import bcrypt from "bcrypt";
 import session from "express-session"
 import passport from "passport";
 import passportConfig from './views/passport.js';
+import flash from "express-flash";
+import Posting from "./views/posting.js";
 
 const app = express()
-
+app.use(flash())
 app.set('view engine', 'ejs');
 app.use( express.static( "public"));
 app.use(bodyParser.json());
@@ -112,6 +114,25 @@ app.post('/login', (req,res,next)=>{
     })(req,res,next);
   
 })
+
+app.post("/homepage", async(req, res) => {
+  const todoTask = new Posting({
+    content: req.body.content
+    });
+    try {
+    await todoTask.save();
+    res.redirect("/");
+    } catch (err) {
+    res.redirect("/");
+    }
+    });
+
+    
+app.get("/homepage", (req, res) => {
+  TodoTask.find({}, (err, tasks) => {
+  res.render("homepage.ejs", { todoTasks: tasks });
+  });
+  });
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true }, () => {
   console.log("Connected to db!");
