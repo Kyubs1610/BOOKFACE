@@ -1,0 +1,61 @@
+<h1>Register</h1>
+<%- include ('./message') %>
+<form action="/register" method="POST">
+  <div>
+      <label for="name">Name</label>
+      <input
+        type="name"
+        name="name"
+        placeholder="Enter Name"
+        value="<%= typeof name != 'undefined' ? name : '' %>"
+      />
+    
+  </div>
+  <div>
+      <label for="email">Email</label>
+      <input
+        type="email"
+        name="email"
+        placeholder="Enter Email"
+        value="<%= typeof email != 'undefined' ? email : '' %>"
+      />
+    </div>
+    <div >
+      <label for="password">Password</label>
+      <input
+        type="password"
+        name="password"
+        placeholder="Create Password"
+        value="<%= typeof password != 'undefined' ? password : '' %>"
+      />
+    </div>
+    <div >
+      <label for="password2">Confirm Password</label>
+      <input
+        type="password"
+        name="password2"
+        placeholder="Confirm Password"
+        value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">
+      Register
+    </button>
+  </form>
+  <p >Have An Account? <a href="/login">Login</a></p>
+<style>
+
+body{
+    background-image: url("low-poly-grid-haikei.png");
+    background-size: cover;
+    background-color: black;
+    height: 100%;
+    color:aliceblue;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+   
+  }
+</style>

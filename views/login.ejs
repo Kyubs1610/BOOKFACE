@@ -1,0 +1,53 @@
+<h1> Login </h1>
+
+<form action="/login" method="POST">
+<div>
+<label for="email">Email</label>
+<input
+type="email"
+name="email"
+placeholder="Enter Email"
+/>
+</div>
+<div>
+    <label for="password">Password</label>
+    <input
+      type="password"
+      name="password"
+      placeholder="Enter Password"
+    />
+  
+</div>
+<button type="submit" class="btn btn-primary btn-block">Login</button>
+   
+</form>
+<a href="/register">Register</a>
+<style>
+  
+  body{
+    background-image: url("low-poly-grid-haikei.png");
+    background-size: cover;
+    background-color: black;
+    height: 100%;
+    color:aliceblue;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+   
+  }
+
+  #email{
+    width: 15em;
+  }
+  button{
+    margin-left: 7rem;
+  }
+  a{
+    text-decoration: none;
+    color: azure;
+    margin-left: 1rem;
+  }
+
+</style>
