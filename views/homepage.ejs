@@ -1,18 +1,66 @@
-<h1>You are well connected under <%= user.name %></h1>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Oswald:wght@200;600&family=Raleway&family=Roboto+Condensed:ital@1&family=Unbounded:wght@500&display=swap" rel="stylesheet">
+<h1>You are well connected under <span> <%= user.name %></span></h1>
 <form action="/login" method="POST">
-  <a href="/login">Logout</a>
+ <a href="/login">Logout</a>
 </form>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Oswald:wght@200;600&family=Raleway&family=Roboto+Condensed:ital@1&family=Unbounded:wght@500&display=swap');
   body{
-    background-image: url("low-poly-grid-haikei.png");
-    background-size: cover;
-    background-color: black;
-    height: 100%;
-    color:aliceblue;
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
+      background-image: url("low-poly-grid-haikei.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-color: black;
+      height: 100%;
+      color:aliceblue;
+      display:flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 15px;
+      animation: 
+        pan 6s infinite alternate linear;
+        font-family: 'Aboreto', cursive;
+    }
+    .box{
+      background: #0a0909;
+      padding: 1.6em;
+      color:white;
+      border-radius: 30px;
+      margin: 1em;
+      opacity: 0.7;
+      text-align: center;
+      }
+  
+  label{
+      display: inline-block;
+      clear: left;
+      width: 15rem;
+      text-align: left;
+      
   }
-</style>
+  input {
+    display: inline-block;
+    
+  }
+  button  {
+    border-radius: 50px;
+    margin-top: 10px;
+    background-color: #0093E9;
+    background-image: linear-gradient(90deg, #0093E9 0%, #181a1a 100%);
+    color: azure;
+    font-size: 20px;
+    padding: 0.4em;
+  }
+  a{
+    text-decoration: none;
+    color: rgb(220, 22, 22);
+  }
+  span{
+    color: rgb(220, 22, 22);
+     
+  }
+  @keyframes pan {
+    100% {background-position: 15% 50%;}
+  }
+  
+  </style>

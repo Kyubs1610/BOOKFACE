@@ -1,7 +1,10 @@
-<h1>Register</h1>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Oswald:wght@200;600&family=Raleway&family=Roboto+Condensed:ital@1&family=Unbounded:wght@500&display=swap" rel="stylesheet">
+<h1>Welcome to Book<span>Face</span></h1>
+<h2> Register </h2>
 <%- include ('./message') %>
 <form action="/register" method="POST">
-  <div>
+  <div class="box"> 
+  <div> 
       <label for="name">Name</label>
       <input
         type="name"
@@ -38,15 +41,17 @@
         value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
       />
     </div>
-    <button type="submit" class="btn btn-primary btn-block">
+    
+    <button type="submit" class="btn">
       Register
-    </button>
+    </button></div>
   </form>
-  <p >Have An Account? <a href="/login">Login</a></p>
+  <p >You have already an account? <a href="/login">Login</a></p>
 <style>
-
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Oswald:wght@200;600&family=Raleway&family=Roboto+Condensed:ital@1&family=Unbounded:wght@500&display=swap');
 body{
     background-image: url("low-poly-grid-haikei.png");
+    background-repeat: no-repeat;
     background-size: cover;
     background-color: black;
     height: 100%;
@@ -55,7 +60,56 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
-   
+    font-size: 15px;
+    animation: 
+      pan 6s infinite alternate linear;
+      font-family: 'Aboreto', cursive;
   }
+  .box{
+    background: #0a0909;
+    padding: 1.6em;
+    color:white;
+    border-radius: 30px;
+    margin: 1em;
+    opacity: 0.7;
+    text-align: center;
+    }
+
+label{
+    display: inline-block;
+    clear: left;
+    width: 15rem;
+    text-align: left;
+    
+}
+input {
+    display: inline-block;
+  background:transparent;
+  border: none;
+  outline:none;
+  border-bottom: 2px solid  rgb(225, 20, 20);
+}
+  
+
+button  {
+  border-radius: 50px;
+  margin-top: 10px;
+  background-color: #0093E9;
+  background-image: linear-gradient(90deg, #0093E9 0%, #181a1a 100%);
+  color: azure;
+  font-size: 20px;
+  padding: 0.4em;
+  cursor:pointer;
+}
+a{
+  text-decoration: none;
+  color: rgb(220, 22, 22);
+}
+span{
+  color: rgb(220, 22, 22);
+   
+}
+@keyframes pan {
+  100% {background-position: 15% 50%;}
+}
 </style>
