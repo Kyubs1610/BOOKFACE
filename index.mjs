@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({
     extended: true,
   })
 );
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: true}))
 
 app.use(session({
   secret : 'secret',
@@ -33,14 +33,8 @@ passportConfig(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get("/homepage", (req, res) => {
-  res.render('homepage',{
-    user: req.user
-    });
-});
-
 app.get('/register',(req,res)=>{
-  res.render('../views/register.ejs')
+  res.render('register.ejs')
  }) 
 
 app.post('/register',(req,res)=>{
@@ -115,26 +109,32 @@ app.post('/login', (req,res,next)=>{
   
 })
 
-app.post("/homepage", async(req, res) => {
-  const todoTask = new Posting({
-    content: req.body.content
-    });
-    try {
-    await todoTask.save();
-    res.redirect("/");
-    } catch (err) {
-    res.redirect("/");
-    }
-    });
-
-    
 app.get("/homepage", (req, res) => {
-  TodoTask.find({}, (err, tasks) => {
-  res.render("homepage.ejs", { todoTasks: tasks });
-  });
-  });
 
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true }, () => {
+  Posting.find({}, (err, postingMessage) => {
+        res.render("homepage.ejs", { user: req.user, postingMessage: postingMessage });
+  });
+});
+app.post("/homepage", async(req, res) => {
+  
+  const postingMessage = new Posting({
+    content: req.body.content,
+    name:req.user.name
+    });
+  if (req.user) {
+    postingMessage.userId = req.user._id;
+  }
+  try {
+    await postingMessage.save();
+    res.render("homepage.ejs", { user: req.user, postingMessage: postingMessage });
+    res.redirect("homepage")
+  } catch (err) {
+    console.log(err)
+    res.redirect("/");
+  }
+});
+
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
   console.log("Connected to db!");
   app.listen(3001, () => console.log("Server Up and running"));
   });

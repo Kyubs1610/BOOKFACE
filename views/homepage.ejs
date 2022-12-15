@@ -1,4 +1,8 @@
+<!DOCTYPE html>
+<head>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Oswald:wght@200;600&family=Raleway&family=Roboto+Condensed:ital@1&family=Unbounded:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
 <h1>You are well connected under <span> <%= user.name %></span></h1>
 <form action="/homepage" method="POST">
 
@@ -7,24 +11,29 @@
     <div class="todo">
     <form action="/homepage" method="POST" class="todo-header">
     <input type="text" name="content">
-    <button type="submit"><span class="fas fa-plus"></span></button>
+    <button type="submit"><span class="fas fa-plus"></span>Post your message</button>
     </form>
     <ul class="todo-list">
-    <li class="todo-list-item">
-    <div class="todo-list-item-name">Some Text</div>
-    <a href="" class="edit">
-    <span class="fas fa-edit"></span>
-    </a>
-    <a href="" class="remove">
-    <span class="fas fa-times"></span>
-    </a>
-    </li>
-    </ul>
-    </div>
-    </div>
+      <% postingMessage.forEach(details => { %>
+      <li class="todo-list-item">
+      <div class="todo-list-item-name">
+      <span>
+        <%= details.name %>
 
- <a href="/login">Logout</a>
-</form>
+      </span>
+      <br>
+      <%= details.content %>
+      </div>
+      <a href="/edit/<%= details._id %>" class="edit">
+      <span class="fas fa-edit"></span>
+      </a>
+      <a href="/remove/<%= details._id %>" class="remove">
+      <span class="fas fa-times"></span>
+      </a>
+      </li>
+      <% }) %>
+    </ul>
+    </body>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Oswald:wght@200;600&family=Raleway&family=Roboto+Condensed:ital@1&family=Unbounded:wght@500&display=swap');
   body{
@@ -41,7 +50,7 @@
       font-size: 15px;
       animation: 
         pan 6s infinite alternate linear;
-        font-family: 'Aboreto', cursive;
+    font-family: 'Aboreto', cursive;
     }
     .box{
       background: #0a0909;
@@ -64,7 +73,7 @@
     display: inline-block;
     
   }
-  /* button  {
+  button  {
     border-radius: 50px;
     margin-top: 10px;
     background-color: #0093E9;
@@ -72,7 +81,7 @@
     color: azure;
     font-size: 20px;
     padding: 0.4em;
-  } */
+  }
   a{
     text-decoration: none;
     color: rgb(220, 22, 22);
@@ -81,8 +90,18 @@
     color: rgb(220, 22, 22);
      
   }
+  .todo-list-item {
+padding: 10px;
+margin-top: 10px;
+border: none;
+border-radius: 5px;
+font-family: 'Candal', sans-serif;
+background: rgba(0, 0, 0, 0.3);
+display: flex;
+flex-direction: row;
+}
   @keyframes pan {
-    100% {background-position: 15% 50%;}
+    100% {background-position: 15% 15%;}
   }
   
   </style>
