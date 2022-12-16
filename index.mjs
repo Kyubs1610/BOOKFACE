@@ -11,6 +11,8 @@ import passportConfig from './views/passport.js';
 import flash from "express-flash";
 import Posting from "./views/posting.js";
 
+// all the import in order to make the app working 
+
 const app = express()
 app.use(flash())
 app.set('view engine', 'ejs');
@@ -32,6 +34,9 @@ app.use(session({
 passportConfig(passport);
 app.use(passport.initialize());
 app.use(passport.session());
+
+// end of the setup and begin of the pages
+//Register page
 
 app.get('/register',(req,res)=>{
   res.render('register.ejs')
@@ -95,6 +100,7 @@ app.post('/register',(req,res)=>{
   }
   })
  
+// Login page
 
 app.get('/login',(req,res)=>{
   res.render('../views/login.ejs')
@@ -108,6 +114,8 @@ app.post('/login', (req,res,next)=>{
     })(req,res,next);
   
 })
+
+// homepage where we will make all our post
 
 app.get("/homepage", (req, res) => {
 
@@ -132,6 +140,8 @@ app.post("/homepage", async(req, res) => {
     res.redirect("/404");
   }
 });
+
+// setup the connection of mongoDB & the browser
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
   console.log("Connected to db!");
