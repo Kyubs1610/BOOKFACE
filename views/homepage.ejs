@@ -12,6 +12,7 @@
     <form action="/homepage" method="POST" class="todo-header">
     <input type="text" name="content">
     <button type="submit"><span class="fas fa-plus"></span>Post your message</button>
+    <button> <a href="/login">Logout</a></button>
     </form>
     <ul class="todo-list">
       <% postingMessage.forEach(details => { %>
@@ -84,7 +85,7 @@
   }
   a{
     text-decoration: none;
-    color: rgb(220, 22, 22);
+   color: aliceblue;
   }
   span{
     color: rgb(220, 22, 22);
@@ -101,7 +102,7 @@ display: flex;
 flex-direction: row;
 }
   @keyframes pan {
-    100% {background-position: 15% 15%;}
+    100% {background-position: 15% 25%;}
   }
   
   </style>

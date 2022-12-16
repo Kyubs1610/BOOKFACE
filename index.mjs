@@ -129,8 +129,7 @@ app.post("/homepage", async(req, res) => {
     res.render("homepage.ejs", { user: req.user, postingMessage: postingMessage });
     res.redirect("homepage")
   } catch (err) {
-    console.log(err)
-    res.redirect("/");
+    res.redirect("/404");
   }
 });
 
